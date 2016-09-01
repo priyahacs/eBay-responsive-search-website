@@ -1,0 +1,181 @@
+<html>
+<head>
+  <title>CSCI 571 Homework 8</title>
+	<!-- v1.3.2 -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="Padma">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="stylesheet" href="css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="css/screen.css"/>
+	<link rel="stylesheet" href="css/styles.css"/>-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        
+	<style type="text/css">
+	body {
+		
+		margin-left: auto;
+		margin-right: auto;
+		width: 70%;
+	}
+
+    h1{
+        text-align: left;
+        font-size: 22px;        
+    }    
+    
+    .form-group.required .control-label:after { 
+        content:"*";
+        color:red;
+    }
+	
+	</style>
+        
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="jquery.validate.js"></script>
+<script src="additional-methods.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="pads.js"></script>
+</head>
+    
+    
+    
+<body>
+    
+    <div id="fb-root"></div>
+    <script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '944377158914004',
+				xfbml      : true,
+				version    : 'v2.2'
+			});
+		};
+		
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=944377158914004&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+<caption>
+<h1>
+<img src="http://cs-server.usc.edu:45678/hw/hw6/ebay.jpg" class="img-rounded" alt="Shopping" width="80" height="40"> Shopping
+</h1>
+</caption>
+    
+    
+  <div class="container-fluid">
+  
+  <form class="form-horizontal" role="form" id="myform" method="GET" >
+    <div class="form-group required">
+      <label class="control-label col-sm-2 col-xs-12" >Key words:</label>
+      <div class="col-sm-10 col-xs-12">
+        <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Enter keyword">
+        <div class="help-block with-errors"></div>
+      </div>
+    </div>
+      
+    <div class="form-group">
+      <label class="control-label col-sm-2 col-xs-12" >Price:</label>
+      <div class="col-sm-5 col-xs-12">          
+        <input type="text" class="form-control" id="MinPrice" name="MinPrice" placeholder="From($)">
+      </div>
+        <div class="col-sm-5 col-xs-12">          
+        <input type="text" class="form-control" id="MaxPrice" name="MaxPrice" placeholder="To($)">
+      </div>
+    </div>
+      
+    <div class="form-group">  
+      <label class="control-label col-sm-2 col-xs-12">Condition:</label>
+      <div class="col-sm-10 col-xs-12">
+        <div class="checkbox">
+          <label><input type="checkbox" name="condition" id="condition" value="1000"> New</label>
+          <label><input type="checkbox" name="condition" id="condition" value="3000"> Used</label>
+          <label><input type="checkbox" name="condition" id="condition" value="4000"> Very Good</label>
+          <label><input type="checkbox" name="condition" id="condition" value="5000"> Good</label>
+          <label><input type="checkbox" name="condition" id="condition" value="6000"> Acceptable</label>
+        </div>
+      </div>
+    </div>
+      
+    <div class="form-group">  
+      <label class="control-label col-sm-2 col-xs-12" for="buy">Buying Format:</label>
+      <div class="col-sm-10 col-xs-12">
+        <div class="checkbox">
+          <label><input type="checkbox" name="buy_format" id="buy_format" value="FixedPrice"> Buy It Now</label>
+          <label><input type="checkbox" name="buy_format" id="buy_format" value="Auction"> Auction</label>
+          <label><input type="checkbox" name="buy_format" id="buy_format" value="Classified"> Classified Ad</label>   
+        </div>
+      </div>
+    </div>
+      
+    <div class="form-group">  
+      <label class="control-label col-sm-2 col-xs-12">Seller:</label>
+      <div class="col-sm-10 col-xs-12">
+        <div class="checkbox">
+          <label><input type="checkbox" name="seller" id="seller" value="returns">Return accepted</label>
+        </div>
+      </div>
+    </div>
+      
+    <div class="form-group">  
+      <label class="control-label col-sm-2 col-xs-12">Shipping:</label>
+      <div class="col-sm-10 col-xs-12">
+        <div class="checkbox">
+          <label><input type="checkbox" name="free_shipping" id="free_shipping" value="free_ship">Free shipping</label>
+          <label><input type="checkbox" name="expedited_shipping" id="expedited_shipping" value="expedited_ship">Expedited shipping </label>
+        </div>
+      </div>
+    </div>
+      
+      <div class="form-group">
+        <label class="control-label col-sm-2 col-xs-12"></label>
+      <div class="col-sm-10 col-xs-12">
+        <input type="text" class="form-control" id="Max_days" name="Max_days" placeholder="Max Handling time(days)">
+      </div>
+    </div>
+    
+      <div class="form-group">
+          <label class="control-label col-sm-2 col-xs-12" for="sort_by">Sort by:</label>
+          <div class="col-sm-10 col-xs-12">
+              <select class="form-control" id="sort_by" name="sort_by">
+                  <option value="BestMatch" selected>Best Match</option>
+                  <option value="CurrentPriceHighest">Price:highest first</option>
+                  <option value="PricePlusShippingHighest">Price+Shipping:highest first</option>
+                  <option value="PricePlusShippingLowest">Price+Shipping:lowest first</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="form-group">
+          <label class="control-label col-sm-2 col-xs-12" for="results_display">Results per page:</label>
+          <div class="col-sm-10 col-xs-12">
+              <select class="form-control" id="results_display" name="results_display">
+                  <option value="5" selected>5</option>
+                  <option value="10">10</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10 col-xs-12 ">
+          <input type="reset" class="btn btn-default" name="Clear" style="float:right;" value="Clear" onClick="clearForm(this.form);">
+          <input type="button" class="btn btn-primary" name="Search" style="float:right;" value="Search" onClick="submitForm(1);"> 
+          </div>
+      </div>
+      <br><br>
+      
+  </form>
+</div>
+    <div id="fail"></div>
+	<div id="success"></div>
+    
+
+
+</body>
+</html>
